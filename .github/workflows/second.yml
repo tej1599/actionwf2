@@ -3,28 +3,23 @@ name: SecondComplex
 on: push
 
 jobs:
-  job1:
-    name: First job
+  ubuntu:
     runs-on: ubuntu-latest
     steps:
     - run: date
 
-  job2:
-    name: Second job
+  windows:
     runs-on: windows-latest
     steps:
     - run: date
 
-  job3:
-    name: Third job
+  macos:
     runs-on: macos-latest
     steps:
     - run: date
       
-
-  job4:
-    depends: [job1, job2, job3]
-    name: Fourth job
+  depends:
+    needs: [ubuntu, windows, macos]
     runs-on: ubuntu-latest
     steps:
     - run: date
